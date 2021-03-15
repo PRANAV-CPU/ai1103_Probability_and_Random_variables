@@ -136,10 +136,25 @@ at random from the box, what is the probability that it will be
 (i) white? (ii) blue? (iii) red?
 \section{Solution(5.23)}
 Let the random variable X=\{0,1,2\} represent the marble being blue,white,red.\\
-As box contain a total of 9 balls and picking any ball is equally likely using the definition of classical probability 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+         \hline
+        \textbf{Color}&\textbf{X}&\textbf{n(X)} \\
+        \hline    
+         blue&0&3\\
+         \hline
+         white&1&2\\
+         \hline
+         red&2&4\\
+         \hline
+    \end{tabular}
+\end{table}
+As box contain a total of 9 balls and picking any ball is equally likely using the definition of classical probability
  \begin{align}
-     \pr{X=0}=\frac{3}{9}\\
-     \pr{X=1}=\frac{2}{9}\\
-     \pr{X=2}=\frac{4}{9}
+     \pr{X=1}=\frac{n(X=1)}{9}=\frac{2}{9}\\
+     \pr{X=0}=\frac{n(X=0)}{9}=\frac{3}{9}\\
+     \pr{X=2}=\frac{n(X=2)}{9}=\frac{4}{9}
  \end{align}
+
 \end{document}
