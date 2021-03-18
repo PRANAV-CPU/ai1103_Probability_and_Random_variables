@@ -11,27 +11,25 @@ from scipy.stats import norm
 import numpy as np
 
 sample_size=10000
-
-#generation of gaussian random variables
-norm_data_U=norm.rvs(size=sample_size)
-
-sum_V=0
-sum_X_k=0
 k=2
 
-#calculating the average of X ,U ,V
-for x in range(sample_size):
-  rand_V=np.random.uniform(0,2)
-  sum_V+=rand_V
-  sum_X_k+=(norm_data_U[x]+k*rand_V)
+#generation of gaussian random variables-U
+norm_data_U=norm.rvs(size=sample_size)
 
-average_X_k=sum_X_k/sample_size
+#generation of uniform random variables-V
+uniform_data_V=np.random.uniform(0,2,size=sample_size)
+
+#generation of uniform random variables-X
+rand_data_X=np.add(norm_data_U,2*uniform_data_V)
+
+#calculating the average of X ,U ,V
 average_U=sum(norm_data_U)/sample_size
-average_V=sum_V/sample_size
+average_V=sum(uniform_data_V)/sample_size
+average_X_k=sum(rand_data_X)/sample_size
 
 #comparing theoritical and classical means
 print("The Experimental and theoritical mean of U are {} --- {}".format(average_U,0))
-print("The Experimental and theoritical mean of X are {} --- {}".format(average_V,1))
+print("The Experimental and theoritical mean of V are {} --- {}".format(average_V,1))
 print("The Experimental and theoritical mean of X are {} --- {}".format(average_X_k,1*k+0))
 
 #plotting theoritical vs classical means
