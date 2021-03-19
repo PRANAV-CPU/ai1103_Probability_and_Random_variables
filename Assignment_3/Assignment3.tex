@@ -41,6 +41,21 @@
     \usepackage{lscape}     
 \usepackage{multicol}
 \usepackage{chngcntr}
+\usepackage{caption}
+
+
+\usepackage{hyperref} %% to turn the links clickable and load this before cleveref
+\usepackage{cleveref}
+
+% each of the following has two versions
+%   \crefname{environmentname}{singular}{plural}, to be used mid-sentence
+%   \Crefname{environmentname}{singular}{plural}, to be used at the beginning of a sentence
+\crefname{table}{table}{tables}
+\Crefname{table}{Table}{Tables}
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{equation}{equation}{equations}
+\Crefname{Equation}{Equation}{Equation}
 
 \DeclareMathOperator*{\Res}{Res}
 
@@ -143,9 +158,13 @@ Here U is a gaussian random variable of mean 0 and Let us consider V is uniforml
    Random Variable             & U & V & X(t)  \\ \hline
 Expected Value & 0 & 1 & t\\ \hline
 \end{tabular}
+\caption{Random Variables and Expected Values}
+\label{tab:expected values}
 \end{table}
+
+Using \cref{tab:expected values} we can deduce that,
 \begin{align}
-    E\sbrak{X(t)}&t=E\sbrak{U+Vt}\\
+    E\sbrak{X(t)}&=E\sbrak{U+Vt}\\
     E\sbrak{X(t)}&=E\sbrak{U}+tE\sbrak{V}\\
     E\sbrak{X(t)}&=0+t\\
     E\sbrak{X(t)}&=t\\
