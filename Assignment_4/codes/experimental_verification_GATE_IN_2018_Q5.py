@@ -12,11 +12,13 @@ from scipy.stats import bernoulli
 
 sample_size=100000
 err=0
+n=5 #no.of trails
+k=3 #k is no.of required heads
 
-#generating 5 trail tossing random process and counting favourable outcomes
+#generating n trail tossing random process and counting favourable outcomes
 for x in range(sample_size):
-  trail=bernoulli.rvs(p=0.5,size=5)
-  if trail[4]==1 and np.sum(trail)==3:
+  trail=bernoulli.rvs(p=0.5,size=n)
+  if trail[n-1]==1 and np.sum(trail)==k:
       err+=1
 
 #favourable outcome is 5th toss resulting in the third head

@@ -105,7 +105,7 @@ columns=fullflexible
 \providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
 %\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
 \providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
-	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+  %\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
 \newcommand{\solution}{\noindent \textbf{Solution: }}
 \newcommand{\cosec}{\,\text{cosec}\,}
 \providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
@@ -158,9 +158,9 @@ Let the random variable $X \in \{0,1\}$ denotes head and tail in a toss.As both 
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Event} & \textbf{Description}                 \\ \hline
-A              & 5th toss is a head                   \\ \hline
-B              & Exactly 2 heads in first four tosses \\ \hline
-C              & 5th toss is the third head           \\ \hline
+A              & nth toss is a head                   \\ \hline
+B              & Exactly k-1 heads in first four tosses \\ \hline
+C              & nth toss is the third head           \\ \hline
 \end{tabular}
 \caption{Description of events used in problem}
 \label{tab:Events}
@@ -168,20 +168,23 @@ C              & 5th toss is the third head           \\ \hline
 
 \begin{align}
 \pr{A}&=\pr{X=1}=\dfrac{1}{2}\\
-\pr{B}&=\dfrac{{}^{4}C_{2}}{2^4}=\dfrac{3}{8}
+\pr{B}&=\dfrac{{}^{n-1}C_{k-1}}{2^{n-1}}\\
 \end{align}
 
 \begin{align}
     C&=AB\\
     \pr{C}&=\pr{AB}
 \end{align}
-
 As A and B are independent events.
-
 \begin{align}
     \pr{C}&=\pr{A}\pr{B}\\
-          &=\dfrac{1}{2}\times\dfrac{3}{8}\\
-          &=\dfrac{3}{16}
+    &=\dfrac{1}{2}\times\dfrac{{}^{n-1}C_{k-1}}{2^{n-1}}\\
+    &=\dfrac{{}^{n-1}C_{k-1}}{2^n}
+\end{align}
+Here n=5,k=3
+\begin{align}
+    \pr{C|n=5,k=2}&=\dfrac{{}^{4}C_{2}}{2^{5}}\\
+    &=\dfrac{6}{32}
 \end{align}
 
 Therefore probability of getting the head for the third time in the fifth toss is $\dfrac{3}{16}$. 
