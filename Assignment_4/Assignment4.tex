@@ -111,7 +111,6 @@ columns=fullflexible
 \providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
-
 \numberwithin{equation}{subsection}
 \makeatletter
 \@addtoreset{figure}{problem}
@@ -153,7 +152,6 @@ Let the random variable $X \in \{0,1\}$ denotes head and tail in a toss.As both 
     \pr{X=0}=\dfrac{1}{2}\\
     \pr{X=1}=\dfrac{1}{2}
 \end{align}
-
 \begin{table}[h]
 \begin{tabular}{|c|c|}
 \hline
@@ -165,12 +163,10 @@ C              & nth toss is the third head           \\ \hline
 \caption{Description of events used in problem}
 \label{tab:Events}
 \end{table}
-
 \begin{align}
 \pr{A}&=\pr{X=1}=\dfrac{1}{2}\\
 \pr{B}&=\dfrac{{}^{n-1}C_{k-1}}{2^{n-1}}
 \end{align}
-
 \begin{align}
     C&=AB\\
     \pr{C}&=\pr{AB}
@@ -186,7 +182,5 @@ Here n=5,k=3
     \pr{C|n=5,k=2}&=\dfrac{{}^{4}C_{2}}{2^{5}}\\
     &=\dfrac{6}{32}
 \end{align}
-
 Therefore probability of getting the head for the third time in the fifth toss is $\dfrac{3}{16}$. 
-
 \end{document}    
