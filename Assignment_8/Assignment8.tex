@@ -1,0 +1,258 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+\usepackage{relsize}
+\usepackage{amsthm}
+\usepackage{newtxtext}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage[inline]{enumitem}   
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\usepackage{esdiff}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\vert#1\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\lVert#1\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E[ #1 ]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+  %\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{Assignment 8}
+\author{Gorantla Pranav Sai- CS20BTECH11018}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+Download all python codes from 
+\begin{lstlisting}
+https://github.com/pranav-159/ai1103_Probability_and_Random_variables/blob/main/Assignment_8/codes/experimental_verification_Assignment8.py
+\end{lstlisting}
+\section{Problem}
+\textbf{GATE 2021 (ME-SET1), Q.42 ( ME section)}\\  
+   Consider a single machine workstation to which jobs arrive according to a
+Poisson distribution with a mean arrival rate of 12 jobs/hour. The process
+time of the workstation is exponentially distributed with a mean of 4
+minutes. The expected number of jobs at the workstation at any given
+point of time is \ldots (\textit{round off to the nearest integer}).
+\section{Solution}
+In a Poisson process,
+ \begin{align}
+          \pr{X=x}&= e^{-\lambda \Delta t} \frac{(\lambda \Delta t)^{x}}{x\,!}
+ \end{align}
+At first let us calculate approximate probability that only one Poisson job occur in  a  small interval $\Delta t$,
+ \begin{align}
+         \pr{X=1}= e^{-\lambda \Delta t} \frac{(\lambda \Delta t)^{1}}{1\,!}
+ \end{align}
+ Here $e^{-\lambda \Delta t}\rightarrow 1$ as $\Delta t \rightarrow 1$
+  \begin{align}
+         \pr{X=1}=\lambda \Delta t \label{singlejob-condition}
+ \end{align}
+ Some assumptions:\\
+ In time interval $\Delta t$,
+ \begin{itemize}
+     \item Exactly one job is arrived  
+     \item or Exactly one job is completed
+     \item or Nothing happens
+ \end{itemize}
+Assumptions seem quite reasonable as $\Delta t$ is very small then the probability of occurrence of more than one poisson job is very low.\\
+ For job arrival,
+ \begin{itemize}
+ \item It is distributed according to Poisson distribution.
+     \item Its
+ Rate parameter $\lambda $=12 jobs/hour.
+ \item Using \eqref{singlejob-condition},Probability that a single job arrives in a small interval $\Delta t=\lambda\Delta t$.
+ \end{itemize}
+ For Job completions,
+ \begin{itemize}
+     \item  Job completion time is distributed exponentially with mean of 4 minutes 
+     \item Then we can assume that no. of job completions are distributed as Poisson distribution with rate parameter $\mu$ = 15 jobs/hour
+     \item Once again using \eqref{singlejob-condition},
+ Probability that a single job will be completed in a small interval $\Delta t=\mu \Delta t$
+ \end{itemize}
+ Some notations,
+ \begin{itemize}
+     \item  Initial no.of jobs at workstation is 0.
+     \item Let $P_{j}(t)$ denote the probability of having $j$ jobs waiting at the workstation at the time $t$ for this initial case.
+     \item After some time,probability of having  j jobs becomes steady.
+     \item Let us denote steady state probability of having j jobs as $\pi_j$.
+ \end{itemize}
+ Condition which ensures that steady state is reached is
+ \begin{align}
+     \diff{P_j(t)}{t}&=0\\
+     \lim_{\Delta t\rightarrow 0}\dfrac{P_j(t+\Delta t)-P_j (t)}{\Delta t}&=0\label{steady-condition}
+ \end{align}
+  We can reach a state of $j$ jobs at time $t+\Delta t$ from
+  \begin{itemize}
+      \item A state of $j-1$ jobs at time $t$ with a new job arriving in the next $\Delta t$
+      \item A state of $j+1$ jobs at time $t$ with a job completing in the next $\Delta t$
+      \item A state of $j$ jobs at time $t$ and nothing happening in the next $\Delta t$
+  \end{itemize}
+ Assuming time  $t$ is long enough for the occurrence of steady state.The above relations can be shown in probability equations as:  
+ \begin{align}
+     P_j(t+\Delta t)&=P_{j-1}(t)\lambda\Delta t+ P_{j+1}(t)\mu \Delta t \nonumber\\&+P_j (t) (1-\lambda\Delta t -\mu \Delta t)\\
+     \dfrac{P_j(t+\Delta t)-P_j (t)}{\Delta t}&= P_{j-1}(t)\lambda +P_{j+1}(t)\mu\nonumber\\& - P_j(t)\lambda -P_j(t)\mu
+\end{align}
+Using \eqref{steady-condition} we get,
+\begin{align}
+     \implies P_{j-1}(t)\lambda +P_{j+1}(t)\mu&=P_j(t)\lambda +P_j(t)\mu \\
+     \pi_{j-1}\lambda +\pi_{j+1}\mu&=\pi_j\lambda +\pi_j\mu\label{recursive} 
+ \end{align}
+ Note that the above equations are  for $j \geq 1$. \\
+ For j=0 jobs at time $t+\Delta t$ we can reach it from j=1 job at time $t$ with a job completion in the next $\Delta t$ or else stay at j=0 at time $t$ and do nothing the next $\Delta t$
+\begin{align}
+    P_0(t+\Delta t)&=P_1(t)\mu \Delta t+\nonumber\\&~~~~P_0(t)(1-\lambda \Delta t)\\
+    \dfrac{P_0(t+\Delta t)-P_0(t)}{\Delta t}&=P_1(t) \mu \Delta t-P_0(t)\lambda \Delta t
+\end{align}
+Once again using \eqref{steady-condition},we will get,
+\begin{align}
+    P_0(t)\lambda \Delta t&= P_1(t) \mu \Delta t\\
+    P_0(t)\lambda&=P_1(t) \mu \\
+    \pi_0 \lambda&=\pi_1\mu\label{base}
+\end{align}
+Solving \eqref{base} and \eqref{recursive} with appropriate j recursively,we will get $P_j$ in terms of $P_0$ as
+\begin{equation}
+    P_j=\brak{\dfrac{\lambda}{\mu}}^jP_0 
+\end{equation}
+consider $\rho = \dfrac{\lambda}{\mu}$.
+\begin{equation}
+    P_j=\rho^j P_0 \label{solution}
+\end{equation}
+We can prove that \eqref{solution} is indeed the solution of recursion equation \eqref{recursive} by using mathematical induction.\\
+Assuming $\rho<1$,let us calculate $P_0$ in terms of $\rho$
+\begin{align}
+    \sum_{j=0}^{\infty}P_j&=1\\
+    \sum_{j=0}^{\infty}\rho^j P_0 &=1\\
+    \dfrac{P_0}{1-\rho}&=1\\
+    P_0&=1-\rho
+\end{align}
+This yields,\\
+\begin{equation}
+    P_j=\rho^j(1-\rho)
+\end{equation}
+Let us calculate expected value of jobs waiting at workstation.
+\begin{align}
+    E(j)&=\sum_{j=0}^{\infty}jP_j\\
+    E(j)&=(1-\rho)\sum_{j=0}^{\infty}j\rho^j\label{first}\\
+    \rho E(j)&=(1-\rho)\sum_{j=0}^{\infty}j\rho^{j+1}\\
+    \rho E(j)&=(1-\rho)\sum_{j=1}^{\infty}(j-1)\rho^{j}\label{second}
+\end{align}
+Subtracting \eqref{second} from \eqref{first}.we get,
+\begin{align}
+    (1-\rho)E(j)&=(1-\rho)\sum_{j=1}^{\infty}\rho^j\\
+    E(j)&=\sum_{j=1}^{\infty}\rho^j\\
+    E(j)&=\dfrac{\rho}{1-\rho}\label{expect}
+\end{align}
+In our case $\rho=\dfrac{\lambda}{\mu}=\dfrac{12}{15}=\dfrac{4}{5}$.\\\\Substituting it in the \eqref{expect} we get,\\
+\begin{equation}
+    E(j)=4
+\end{equation}
+$\therefore$ Expected no.of jobs at workstation is 4.
+\end{document}    
