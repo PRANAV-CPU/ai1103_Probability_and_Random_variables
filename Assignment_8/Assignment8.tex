@@ -143,112 +143,33 @@ time of the workstation is exponentially distributed with a mean of 4
 minutes. The expected number of jobs at the workstation at any given
 point of time is \ldots (\textit{round off to the nearest integer}).
 \section{Solution}
-In a Poisson process,
- \begin{align}
-          \pr{X=x}&= e^{-\lambda \Delta t} \frac{(\lambda \Delta t)^{x}}{x\,!}
- \end{align}
-At first let us calculate approximate probability that only one Poisson job occur in  a  small interval $\Delta t$,
- \begin{align}
-         \pr{X=1}= e^{-\lambda \Delta t} \frac{(\lambda \Delta t)^{1}}{1\,!}
- \end{align}
- Here $e^{-\lambda \Delta t}\rightarrow 1$ as $\Delta t \rightarrow 1$
-  \begin{align}
-         \pr{X=1}=\lambda \Delta t \label{singlejob-condition}
- \end{align}
- Some assumptions:\\
- In time interval $\Delta t$,
- \begin{itemize}
-     \item Exactly one job is arrived  
-     \item or Exactly one job is completed
-     \item or Nothing happens
- \end{itemize}
-Assumptions seem quite reasonable as $\Delta t$ is very small then the probability of occurrence of more than one poisson job is very low.\\
  For job arrival,
  \begin{itemize}
  \item It is distributed according to Poisson distribution.
      \item Its
- Rate parameter $\lambda $=12 jobs/hour.
- \item Using \eqref{singlejob-condition},Probability that a single job arrives in a small interval $\Delta t=\lambda\Delta t$.
+ Rate parameter $\lambda $=12 jobs/hour
  \end{itemize}
  For Job completions,
  \begin{itemize}
      \item  Job completion time is distributed exponentially with mean of 4 minutes 
      \item Then we can assume that no. of job completions are distributed as Poisson distribution with rate parameter $\mu$ = 15 jobs/hour
-     \item Once again using \eqref{singlejob-condition},
- Probability that a single job will be completed in a small interval $\Delta t=\mu \Delta t$
  \end{itemize}
- Some notations,
- \begin{itemize}
-     \item  Initial no.of jobs at workstation is 0.
-     \item Let $P_{j}(t)$ denote the probability of having $j$ jobs waiting at the workstation at the time $t$ for this initial case.
-     \item After some time,probability of having  j jobs becomes steady.
-     \item Let us denote steady state probability of having j jobs as $\pi_j$.
- \end{itemize}
- Condition which ensures that steady state is reached is
- \begin{align}
-     \diff{P_j(t)}{t}&=0\\
-     \lim_{\Delta t\rightarrow 0}\dfrac{P_j(t+\Delta t)-P_j (t)}{\Delta t}&=0\label{steady-condition}
- \end{align}
-  We can reach a state of $j$ jobs at time $t+\Delta t$ from
-  \begin{itemize}
-      \item A state of $j-1$ jobs at time $t$ with a new job arriving in the next $\Delta t$
-      \item A state of $j+1$ jobs at time $t$ with a job completing in the next $\Delta t$
-      \item A state of $j$ jobs at time $t$ and nothing happening in the next $\Delta t$
-  \end{itemize}
- Assuming time  $t$ is long enough for the occurrence of steady state.The above relations can be shown in probability equations as:  
- \begin{align}
-     P_j(t+\Delta t)&=P_{j-1}(t)\lambda\Delta t+ P_{j+1}(t)\mu \Delta t \nonumber\\&+P_j (t) (1-\lambda\Delta t -\mu \Delta t)\\
-     \dfrac{P_j(t+\Delta t)-P_j (t)}{\Delta t}&= P_{j-1}(t)\lambda +P_{j+1}(t)\mu\nonumber\\& - P_j(t)\lambda -P_j(t)\mu
-\end{align}
-Using \eqref{steady-condition} we get,
+
+Let $\rho=\dfrac{\lambda}{\mu}$,\\
+\begin{table}[h]
+\begin{tabular}{|c|p{6cm}|}
+\hline
+\textbf{Parameter} & \textbf{Definition}                               \\ \hline
+$\lambda$          & Poisson rate parameter for the arrival of jobs    \\ \hline
+$\mu$              & Poisson rate parameter for the completion of jobs \\ \hline
+$\rho$             & $\dfrac{\lambda}{\mu}$                            \\ \hline
+\end{tabular}
+\caption{Parameters and their definitions used in the problem}
+\label{tab:parameters}
+\end{table}
+In the case where both job completions and job arrivals are distributed by Poisson distribution,Expected no.of jobs at workstation is,
 \begin{align}
-     \implies P_{j-1}(t)\lambda +P_{j+1}(t)\mu&=P_j(t)\lambda +P_j(t)\mu \\
-     \pi_{j-1}\lambda +\pi_{j+1}\mu&=\pi_j\lambda +\pi_j\mu\label{recursive} 
- \end{align}
- Note that the above equations are  for $j \geq 1$. \\
- For j=0 jobs at time $t+\Delta t$ we can reach it from j=1 job at time $t$ with a job completion in the next $\Delta t$ or else stay at j=0 at time $t$ and do nothing the next $\Delta t$
-\begin{align}
-    P_0(t+\Delta t)&=P_1(t)\mu \Delta t+\nonumber\\&~~~~P_0(t)(1-\lambda \Delta t)\\
-    \dfrac{P_0(t+\Delta t)-P_0(t)}{\Delta t}&=P_1(t) \mu \Delta t-P_0(t)\lambda \Delta t
-\end{align}
-Once again using \eqref{steady-condition},we will get,
-\begin{align}
-    P_0(t)\lambda \Delta t&= P_1(t) \mu \Delta t\\
-    P_0(t)\lambda&=P_1(t) \mu \\
-    \pi_0 \lambda&=\pi_1\mu\label{base}
-\end{align}
-Solving \eqref{base} and \eqref{recursive} with appropriate j recursively,we will get $P_j$ in terms of $P_0$ as
-\begin{equation}
-    P_j=\brak{\dfrac{\lambda}{\mu}}^jP_0 
-\end{equation}
-consider $\rho = \dfrac{\lambda}{\mu}$.
-\begin{equation}
-    P_j=\rho^j P_0 \label{solution}
-\end{equation}
-We can prove that \eqref{solution} is indeed the solution of recursion equation \eqref{recursive} by using mathematical induction.\\
-Assuming $\rho<1$,let us calculate $P_0$ in terms of $\rho$
-\begin{align}
-    \sum_{j=0}^{\infty}P_j&=1\\
-    \sum_{j=0}^{\infty}\rho^j P_0 &=1\\
-    \dfrac{P_0}{1-\rho}&=1\\
-    P_0&=1-\rho
-\end{align}
-This yields,\\
-\begin{equation}
-    P_j=\rho^j(1-\rho)
-\end{equation}
-Let us calculate expected value of jobs waiting at workstation.
-\begin{align}
-    E(j)&=\sum_{j=0}^{\infty}jP_j\\
-    E(j)&=(1-\rho)\sum_{j=0}^{\infty}j\rho^j\label{first}\\
-    \rho E(j)&=(1-\rho)\sum_{j=0}^{\infty}j\rho^{j+1}\\
-    \rho E(j)&=(1-\rho)\sum_{j=1}^{\infty}(j-1)\rho^{j}\label{second}
-\end{align}
-Subtracting \eqref{second} from \eqref{first}.we get,
-\begin{align}
-    (1-\rho)E(j)&=(1-\rho)\sum_{j=1}^{\infty}\rho^j\\
-    E(j)&=\sum_{j=1}^{\infty}\rho^j\\
-    E(j)&=\dfrac{\rho}{1-\rho}\label{expect}
+    E(j)=\dfrac{\rho}{1-\rho} \label{expect}
 \end{align}
 In our case $\rho=\dfrac{\lambda}{\mu}=\dfrac{12}{15}=\dfrac{4}{5}$.\\\\Substituting it in the \eqref{expect} we get,\\
 \begin{equation}

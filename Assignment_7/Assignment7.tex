@@ -140,14 +140,14 @@ columns=fullflexible
 \section{Solution}
   General solution for the characteristic solution which is consistent with our condition is,
   \begin{align}
-      \phi_X(t)=\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}& \text{~~where~~} z \in \mathds{Z} \text{~~and}\\
-      &\sum_{z=-\infty}^{\infty}\alpha_z=1 \label{main condition}
+      \phi(t)=\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}& \text{~~where~~} z \in \mathds{Z} \text{~~and}\\
+      &\sum_{z=-\infty}^{\infty}\alpha_z=1~~,~~\alpha_z \in \mathds{R} \label{main condition}
   \end{align}
   Using Gil-Pelaez formula for probability density function,
   \begin{align}
       f_X(x)&=\dfrac{1}{4\pi}\int_{-\infty}^\infty e^{itx}\phi(-t)+e^{-itx}\phi(t)~dt\\
-      &=\dfrac{1}{4\pi}\int_{-\infty}^\infty e^{itx}\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}\nonumber\\&~~~~~~~~~+\dfrac{1}{4\pi}e^{-itx}\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}~dt\\
-      &=\dfrac{1}{4\pi}\sum_{z=-\infty}^{\infty}\int_{-\infty}^\infty\alpha_ze^{-it(x-z)}dt\nonumber\\&~~~~~~~~+\dfrac{1}{4\pi}\sum_{z=-\infty}^{\infty}\int_{-\infty}^\infty\alpha_ze^{it(x+z)}dt
+      &=\dfrac{1}{4\pi}\int_{-\infty}^\infty e^{itx}\sum_{z=-\infty}^{\infty}\alpha_ze^{-itz} ~dt\nonumber\\&~~~~~~~~~+\dfrac{1}{4\pi}\int_{-\infty}^\infty e^{-itx}\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}~dt\\
+      &=\dfrac{1}{4\pi}\sum_{z=-\infty}^{\infty}\int_{-\infty}^\infty\alpha_ze^{it(x-z)}dt\nonumber\\&~~~~~~~~+\dfrac{1}{4\pi}\sum_{z=-\infty}^{\infty}\int_{-\infty}^\infty\alpha_ze^{-it(x-z)}dt
 \end{align}
 We know that,
 \begin{equation}
@@ -155,24 +155,18 @@ We know that,
 \end{equation}
 Using \eqref{delta function} we get,
 \begin{align}
-     f_X(x) &=\dfrac{1}{2}\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)+\dfrac{1}{2}\sum_{z=-\infty}^{\infty}\alpha_z \delta(x+z)\\
-     &=\dfrac{1}{2}\sum_{z=-\infty}^{\infty}(\alpha_z+\alpha_{-z})\delta(x-z)
+     f_X(x) &=\dfrac{1}{2}\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)+\dfrac{1}{2}\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)\\
+     &=\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)
 \end{align}
-  Taking $\beta_{|z|}=\dfrac{\alpha_z+\alpha_{-z}}{2}$,
-  \begin{align}
-       f_X(x)&=\sum_{z=-\infty}^{\infty}\beta_{|z|}\delta(x-z)
-  \end{align}
   We know that,
   \begin{align}
       \pr{X=z_0|z_0 \in \mathds{Z}}&=\int_{-\infty}^{\infty} f_X(z_0)~dx\\
-      &=\int_{-\infty}^{\infty}\sum_{z=-\infty}^{\infty}\beta_{|z|}\delta(z_0-z)~dx\\
-      &=\beta_{|z_0|}
+      &=\int_{-\infty}^{\infty}\sum_{z=-\infty}^{\infty}\alpha_{z_0}\delta(z_0-z)~dx\\
+      &=\alpha_{z_0}
   \end{align}
   \begin{align}
       P(X \in \mathds{Z})&=\sum_{z_0=-\infty}^{\infty}\pr{X=z_0}\nonumber\\&~~~~~~~~\text{where~~} z_0 \in \mathds{Z}\\
-      &=\sum_{z_0=-\infty}^{\infty}\beta_{|z_0|}\\
-      &=\sum_{z_0=-\infty}^{\infty}\dfrac{\alpha_{z_0}+\alpha_{-z_0}}{2}\\
-      &=\dfrac{\mathlarger{\sum}_{z_0=-\infty}^{\infty}\alpha_{z_0}+\mathlarger{\sum}_{z_0=-\infty}^{\infty}\alpha_{-z_0}}{2}
+      &=\sum_{z_0=-\infty}^{\infty}\alpha_{z_0}
   \end{align}
   Using \eqref{main condition} we get,
   $$ P(X \in \mathds{Z})=1$$
