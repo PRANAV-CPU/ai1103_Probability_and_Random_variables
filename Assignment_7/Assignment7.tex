@@ -145,9 +145,9 @@ columns=fullflexible
   \end{align}
   Using Gil-Pelaez formula for probability density function,
   \begin{align}
-      f_X(x)&=\dfrac{1}{4\pi}\int_{-\infty}^\infty e^{itx}\phi(-t)+e^{-itx}\phi(t)~dt\\
-      &=\dfrac{1}{4\pi}\int_{-\infty}^\infty e^{itx}\sum_{z=-\infty}^{\infty}\alpha_ze^{-itz} ~dt\nonumber\\&~~~~~~~~~+\dfrac{1}{4\pi}\int_{-\infty}^\infty e^{-itx}\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}~dt\\
-      &=\dfrac{1}{4\pi}\sum_{z=-\infty}^{\infty}\int_{-\infty}^\infty\alpha_ze^{it(x-z)}dt\nonumber\\&~~~~~~~~+\dfrac{1}{4\pi}\sum_{z=-\infty}^{\infty}\int_{-\infty}^\infty\alpha_ze^{-it(x-z)}dt
+      f_X(x)&=\dfrac{1}{2\pi}\int_{-\infty}^\infty e^{-itx}\phi(t)~dt\\
+      &=\dfrac{1}{2\pi}\int_{-\infty}^\infty e^{-itx}\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}~dt\\
+      &=\dfrac{1}{2\pi}\sum_{z=-\infty}^{\infty}\int_{-\infty}^\infty\alpha_ze^{-it(x-z)}dt
 \end{align}
 We know that,
 \begin{equation}
@@ -155,16 +155,22 @@ We know that,
 \end{equation}
 Using \eqref{delta function} we get,
 \begin{align}
-     f_X(x) &=\dfrac{1}{2}\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)+\dfrac{1}{2}\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)\\
-     &=\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)
+     f_X(x) &=\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)
 \end{align}
   We know that,
   \begin{align}
-      \pr{X=z_0|z_0 \in \mathds{Z}}&=\int_{-\infty}^{\infty} f_X(z_0)~dx\\
-      &=\int_{-\infty}^{\infty}\sum_{z=-\infty}^{\infty}\alpha_{z_0}\delta(z_0-z)~dx\\
-      &=\alpha_{z_0}
-  \end{align}
-  \begin{align}
+      \pr{X=z_0}&=\lim_{\epsilon\rightarrow 0}~\int_{z_0-\epsilon}^{z_0+\epsilon} f_X(z_0)~dx\\
+      &=\lim_{\epsilon\rightarrow 0}~\int_{z_0-\epsilon}^{z_0+\epsilon}\sum_{z=-\infty}^{\infty}\alpha_{z}\delta(z_0-z)~dx
+\end{align}
+if $z_0 \in \mathds{Z}$
+\begin{align}
+      \pr{X=z_0} =\alpha_{z_0}
+\end{align}
+else
+\begin{align}
+        \pr{X=z_0} =0
+\end{align}
+\begin{align}
       P(X \in \mathds{Z})&=\sum_{z_0=-\infty}^{\infty}\pr{X=z_0}\nonumber\\&~~~~~~~~\text{where~~} z_0 \in \mathds{Z}\\
       &=\sum_{z_0=-\infty}^{\infty}\alpha_{z_0}
   \end{align}
