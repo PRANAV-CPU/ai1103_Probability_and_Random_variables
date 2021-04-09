@@ -16,10 +16,8 @@
 \usepackage{cite}
 \usepackage{cases}
 \usepackage{subfig}
-
 \usepackage{longtable}
 \usepackage{multirow}
-
 \usepackage[inline]{enumitem}   
 \makeatletter
 % This command ignores the optional argument for itemize and enumerate lists
@@ -42,7 +40,7 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{graphicx}
 \usepackage{tkz-euclide}
-
+\usepackage{makecell}
 \usetikzlibrary{calc,math}
 \usepackage{listings}
     \usepackage{color}                                            %%
@@ -64,7 +62,7 @@
 \renewcommand\thesectiondis{\arabic{section}}
 \renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
 \renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
-
+\newcolumntype{C}{>$c<$}
 
 \hyphenation{op-tical net-works semi-conduc-tor}
 \def\inputGnumericTable{}                                 %%
@@ -135,45 +133,106 @@ columns=fullflexible
 \renewcommand{\thetable}{\theenumi}
 
 \section{Problem}
-\textbf{GATE 2019 (ST) , Q.49 (Statistics section)}\\
-   Let X be a random variable with characteristic function $\phi_X(\cdot)$ such that $\phi_X(2 \pi)=1$.Let $\mathds{Z}$ denote the set of integers.Then $P(X \in \mathds{Z})$ is equal to \ldots
+\textbf{gov/stats/2015/statistics-I(1), Q.3(C)}\\
+  Three points are chosen on the line of unit length.Find the probability that each the 3 line segments have length greater than $\dfrac{1}{4}$.
 \section{Solution}
-  General solution for the characteristic solution which is consistent with our condition is,
-  \begin{align}
-      \phi(t)=\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}& \text{~~where~~} z \in \mathds{Z} \text{~~and}\\
-      &\sum_{z=-\infty}^{\infty}\alpha_z=1~~,~~\alpha_z \in \mathds{R} \label{main condition}
-  \end{align}
-  Using Gil-Pelaez formula for probability density function,
-  \begin{align}
-      f_X(x)&=\dfrac{1}{2\pi}\int_{-\infty}^\infty e^{-itx}\phi(t)~dt\\
-      &=\dfrac{1}{2\pi}\int_{-\infty}^\infty e^{-itx}\sum_{z=-\infty}^{\infty}\alpha_ze^{itz}~dt\\
-      &=\dfrac{1}{2\pi}\sum_{z=-\infty}^{\infty}\int_{-\infty}^\infty\alpha_ze^{-it(x-z)}dt
-\end{align}
-We know that,
-\begin{equation}
-    \int_{-\infty}^{\infty}e^{\pm ik(x-x_{0})}dk=2\pi~\delta(x-x_{0}) \label{delta function}
-\end{equation}
-Using \eqref{delta function} we get,
+ Let $X,Y \in \{0,1\}$ be the random variables which represent the position of two points on the line of unit length.\\
+Conditions which should be satisfied to have three line segments with length greater than 
+\begin{table}[h]
+\centering
+\bgroup
+\def\arraystretch{2}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Event} & \textbf{Condition}                     \\\hline
+A              & $\dfrac{1}{4}<X<\dfrac{3}{4}$ \\[1ex] \hline
+B              & $\dfrac{1}{4}<Y<\dfrac{3}{4}$ \\[1ex] \hline
+C              & $\dfrac{1}{4}<|X-Y|$ \\[1ex] \hline
+\end{tabular}
+\egroup
+\caption{Events and their conditions}
+\label{tab:Events}
+\end{table}
+$\frac{1}{4}$ are given in the below table.\\
+Then the required event which solves the problem is $ABC$.\\
+As $A$ and $B$ are independent events.
 \begin{align}
-     f_X(x) &=\sum_{z=-\infty}^{\infty}\alpha_z \delta(x-z)
+    \pr{ABC}&=\pr{A}\pr{B}\pr{C|AB}
 \end{align}
-  We know that,
-  \begin{align}
-      \pr{X=z_0}&=\lim_{\epsilon\rightarrow 0}~\int_{z_0-\epsilon}^{z_0+\epsilon} f_X(z_0)~dx\\
-      &=\lim_{\epsilon\rightarrow 0}~\int_{z_0-\epsilon}^{z_0+\epsilon}\sum_{z=-\infty}^{\infty}\alpha_{z}\delta(z_0-z)~dx
-\end{align}
-if $z_0 \in \mathds{Z}$
+As X and Y are uniformly distributed between 0 and 1.
 \begin{align}
-      \pr{X=z_0} =\alpha_{z_0}
+    \pr{A}&=\pr{\dfrac{1}{4}<X<\dfrac{3}{4}}=\dfrac{1}{2}\\
+    \pr{B}&=\pr{\dfrac{1}{4}<Y<\dfrac{3}{4}}=\dfrac{1}{2}
 \end{align}
-else
+When event AB is known to occur,X and Y are uniformly distributed between $\dfrac{1}{4}$ and $\dfrac{3}{4}$\\\\ 
+Conditional probability density functions of X and Y with condition AB are
 \begin{align}
-        \pr{X=z_0} =0
+    f_{X|AB}(x) = 
+    \begin{cases}
+    2 & x\in \brak{\frac{1}{4},\frac{3}{4}}\\
+    0 & \text{otherwise}
+    \end{cases}
 \end{align}
 \begin{align}
-      P(X \in \mathds{Z})&=\sum_{z_0=-\infty}^{\infty}\pr{X=z_0}\nonumber\\&~~~~~~~~\text{where~~} z_0 \in \mathds{Z}\\
-      &=\sum_{z_0=-\infty}^{\infty}\alpha_{z_0}
-  \end{align}
-  Using \eqref{main condition} we get,
-  $$ P(X \in \mathds{Z})=1$$
+    f_{Y|AB}(y) = 
+    \begin{cases}
+    2 & y\in \brak{\frac{1}{4},\frac{3}{4}}\\
+    0 & \text{otherwise}
+    \end{cases}
+\end{align}
+Let $Z=X-Y$.Then pdf of Z with condition AB can be given as
+\begin{align}
+    f_{Z|AB}(z)&=\int_{-\infty}^{\infty}f_{X|AB}(y+z)f_{Y|AB}(y)~dy\\
+    f_{Z|AB}(z)&=\int_{\frac{1}{4}}^{\frac{3}{4}}f_{X|AB}(y+z)f_{Y|AB}(y)~dy
+\end{align}
+if $z \in \sbrak{0,\dfrac{1}{2}}$,
+\begin{align}
+    f_{Z|AB}(z)&=\int_{\frac{1}{4}}^{\frac{3}{4}-z}f_{X|AB}(y+z)f_{Y|AB}(y)~dy\\
+       f_{Z|AB}(z)&=4\brak{\frac{1}{2}-z}\\
+       f_{Z|AB}(z)&=2-4z
+\end{align}
+if$~~z \in \sbrak{-\dfrac{1}{2},0}$,
+\begin{align}
+    f_{Z|AB}(z)&=\int_{\frac{1}{4}-z}^{\frac{3}{4}}f_{X|AB}(y+z)f_{Y|AB}(y)~dy\\
+       f_{Z|AB}(z)&=4\brak{\frac{1}{2}+z}\\
+       f_{Z|AB}(z)&=2+4z 
+\end{align}
+if $~~z \in \brak{-\infty,-\dfrac{1}{2}}\cup \brak{\dfrac{1}{2},\infty}$,
+\begin{align}
+    f_{Z|AB}(z)=0
+\end{align}
+\begin{table}[h]
+\centering
+\bgroup
+\def\arraystretch{2}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Interval} & ${\boldsymbol f_{X|AB}}$                     \\\hline
+$z \in \sbrak{0,\dfrac{1}{2}}$       & $2-4z$ \\[1ex] \hline
+$~~z \in \sbrak{-\dfrac{1}{2},0}$          & $2+4z$ \\[1ex] \hline
+   $~~z \in \brak{-\infty,-\dfrac{1}{2}}\cup \brak{\dfrac{1}{2},\infty}$        & $0$ \\[1ex] \hline
+\end{tabular}
+\egroup
+\caption{Pdf of Z in different intervals}
+\label{tab:pdf_Z}
+\end{table}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/pdf_Z.png}
+    \caption{pdf Z with AB already occurred}
+    \label{fig:pdf_Z}
+\end{figure}
+\begin{align}
+    \pr{C|AB}&=\int_{|z|>\frac{1}{4}}f_{z|AB}~dz\\
+             &=\int_{-\frac{1}{2}}^{-\frac{1}{4}}f_{z|AB}~dz+\int^{\frac{1}{2}}_{\frac{1}{4}}f_{z|AB}~dz\\
+             &=\dfrac{1}{8}+\dfrac{1}{8}\\
+             &=\dfrac{1}{4}
+\end{align}
+\begin{align}
+    \pr{ABC}&=\pr{A}\pr{B}\pr{C|AB}\\
+    \pr{ABC}&=\dfrac{1}{2}\times \dfrac{1}{2}\times 
+    \dfrac{1}{4}\\
+    \pr{ABC}&=\dfrac{1}{16}
+\end{align}
+$\therefore$ probability that each of the three line segments have length greater than $\dfrac{1}{4}$ is $\dfrac{1}{16}$.
 \end{document}    
