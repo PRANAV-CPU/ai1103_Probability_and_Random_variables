@@ -150,92 +150,46 @@ Conditions which should be satisfied to have three line segments with length gre
 \textbf{Event} & \textbf{Condition}                     \\\hline
 A              & $\dfrac{1}{4}<X<\dfrac{3}{4}$ \\[1ex] \hline
 B              & $\dfrac{1}{4}<Y<\dfrac{3}{4}$ \\[1ex] \hline
-C              & $\dfrac{1}{4}<|X-Y|$ \\[1ex] \hline
+C              & $\dfrac{1}{4}<X-Y$ \\[1ex] \hline
+D           & $\dfrac{1}{4}<Y-X$ \\[1ex] \hline
 \end{tabular}
 \egroup
 \caption{Events and their conditions}
 \label{tab:Events}
 \end{table}
 $\frac{1}{4}$ are given in the below table.\\
-Then the required event which solves the problem is $ABC$.\\
-As $A$ and $B$ are independent events.
+Then the required event which solves the problem is $ABC$+$ABD$.\\
 \begin{align}
-    \pr{ABC}&=\pr{A}\pr{B}\pr{C|AB}
+    \pr{ABC}&=\pr{\frac{1}{4}+Y<X,\frac{1}{4}<X,Y<\frac{3}{4}}\\
+    &=\sum_{y=\frac{1}{4}}^{\frac{3}{4}}\pr{\frac{1}{4}+y<X,\frac{1}{4}<X<\frac{3}{4}\biggr\rvert Y=y}\\
+     &=\sum_{y=\frac{1}{4}}^{\frac{3}{4}}\pr{\frac{1}{4}+y<X<\frac{3}{4}\biggr\rvert Y=y}\\
+     &=\sum_{y=\frac{1}{4}}^{\frac{3}{4}}\pr{Y=y}\pr{\frac{1}{4}+y<X<\frac{3}{4}}\label{step2}
+     \end{align}
+     As $X$ is distributed uniformly between 0 and 1.
+     \begin{align}
+        \pr{\frac{1}{4}+y<X<\frac{3}{4}}=\begin{cases}
+        \dfrac{1}{2}-y&y\in \brak{0,\dfrac{1}{2}}\\
+        0&\text{otherwise}
+        \end{cases}\label{step2help}
+     \end{align}
+     Using \eqref{step2help},\eqref{step2} can be written as
+     \begin{align}
+    \pr{ABC}&=\sum_{y=\frac{1}{4}}^{\frac{1}{2}}\pr{Y=y}\brak{\frac{1}{2}-y}\\
+    &=\int_{\frac{1}{4}}^{\frac{1}{2}}\brak{\frac{1}{2}-y} f_{Y}(y)~dy
+    \end{align}
+    As y is distributed uniformly between 0 and 1.
+    \begin{align}
+   \pr{ABC} &=\int_{\frac{1}{4}}^{\frac{1}{2}}\frac{1}{2}-y~dy\\
+    &=\dfrac{1}{32}
 \end{align}
-As X and Y are uniformly distributed between 0 and 1.
+Similarly,we can find,
 \begin{align}
-    \pr{A}&=\pr{\dfrac{1}{4}<X<\dfrac{3}{4}}=\dfrac{1}{2}\\
-    \pr{B}&=\pr{\dfrac{1}{4}<Y<\dfrac{3}{4}}=\dfrac{1}{2}
+    \pr{ABD}&=\dfrac{1}{32}
 \end{align}
-When event AB is known to occur,X and Y are uniformly distributed between $\dfrac{1}{4}$ and $\dfrac{3}{4}$\\\\ 
-Conditional probability density functions of X and Y with condition AB are
+As $C$ and $D$ are mutually exclusive events.
 \begin{align}
-    f_{X|AB}(x) = 
-    \begin{cases}
-    2 & x\in \brak{\frac{1}{4},\frac{3}{4}}\\
-    0 & \text{otherwise}
-    \end{cases}
+    \pr{ABC+ABD}&=\pr{ABC}+\pr{ABD}\\
+    &=\dfrac{1}{16} 
 \end{align}
-\begin{align}
-    f_{Y|AB}(y) = 
-    \begin{cases}
-    2 & y\in \brak{\frac{1}{4},\frac{3}{4}}\\
-    0 & \text{otherwise}
-    \end{cases}
-\end{align}
-Let $Z=X-Y$.Then pdf of Z with condition AB can be given as
-\begin{align}
-    f_{Z|AB}(z)&=\int_{-\infty}^{\infty}f_{X|AB}(y+z)f_{Y|AB}(y)~dy\\
-    f_{Z|AB}(z)&=\int_{\frac{1}{4}}^{\frac{3}{4}}f_{X|AB}(y+z)f_{Y|AB}(y)~dy
-\end{align}
-if $z \in \sbrak{0,\dfrac{1}{2}}$,
-\begin{align}
-    f_{Z|AB}(z)&=\int_{\frac{1}{4}}^{\frac{3}{4}-z}f_{X|AB}(y+z)f_{Y|AB}(y)~dy\\
-       f_{Z|AB}(z)&=4\brak{\frac{1}{2}-z}\\
-       f_{Z|AB}(z)&=2-4z
-\end{align}
-if$~~z \in \sbrak{-\dfrac{1}{2},0}$,
-\begin{align}
-    f_{Z|AB}(z)&=\int_{\frac{1}{4}-z}^{\frac{3}{4}}f_{X|AB}(y+z)f_{Y|AB}(y)~dy\\
-       f_{Z|AB}(z)&=4\brak{\frac{1}{2}+z}\\
-       f_{Z|AB}(z)&=2+4z 
-\end{align}
-if $~~z \in \brak{-\infty,-\dfrac{1}{2}}\cup \brak{\dfrac{1}{2},\infty}$,
-\begin{align}
-    f_{Z|AB}(z)=0
-\end{align}
-\begin{table}[h]
-\centering
-\bgroup
-\def\arraystretch{2}
-\begin{tabular}{|c|c|}
-\hline
-\textbf{Interval} & ${\boldsymbol f_{X|AB}}$                     \\\hline
-$z \in \sbrak{0,\dfrac{1}{2}}$       & $2-4z$ \\[1ex] \hline
-$~~z \in \sbrak{-\dfrac{1}{2},0}$          & $2+4z$ \\[1ex] \hline
-   $~~z \in \brak{-\infty,-\dfrac{1}{2}}\cup \brak{\dfrac{1}{2},\infty}$        & $0$ \\[1ex] \hline
-\end{tabular}
-\egroup
-\caption{Pdf of Z in different intervals}
-\label{tab:pdf_Z}
-\end{table}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\columnwidth]{figures/pdf_Z.png}
-    \caption{pdf Z with AB already occurred}
-    \label{fig:pdf_Z}
-\end{figure}
-\begin{align}
-    \pr{C|AB}&=\int_{|z|>\frac{1}{4}}f_{z|AB}~dz\\
-             &=\int_{-\frac{1}{2}}^{-\frac{1}{4}}f_{z|AB}~dz+\int^{\frac{1}{2}}_{\frac{1}{4}}f_{z|AB}~dz\\
-             &=\dfrac{1}{8}+\dfrac{1}{8}\\
-             &=\dfrac{1}{4}
-\end{align}
-\begin{align}
-    \pr{ABC}&=\pr{A}\pr{B}\pr{C|AB}\\
-    \pr{ABC}&=\dfrac{1}{2}\times \dfrac{1}{2}\times 
-    \dfrac{1}{4}\\
-    \pr{ABC}&=\dfrac{1}{16}
-\end{align}
-$\therefore$ probability that each of the three line segments have length greater than $\dfrac{1}{4}$ is $\dfrac{1}{16}$.
+$\therefore$ probability that each of the three line segments have length greater than $\dfrac{1}{4}$  is  $\dfrac{1}{16}$.
 \end{document}    
