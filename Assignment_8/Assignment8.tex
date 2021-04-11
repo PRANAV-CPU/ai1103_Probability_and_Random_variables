@@ -31,7 +31,6 @@
     \quad\@itemlabel\hspace{\labelsep}%
 \fi}
 \makeatother
-\usepackage{esdiff}
 \usepackage{mathtools}
 \usepackage{steinmetz}
 \usepackage{tikz}
@@ -196,7 +195,7 @@ $\pi_j$            & steady probability of having j jobs at workstation\\\hline
  \end{itemize}
  Condition which ensures that steady state is reached is
  \begin{align}
-     \diff{P_j(t)}{t}&=0\\
+     \frac{\text{d}P_j(t)}{\text{d}t}&=0\\
      \lim_{\Delta t\rightarrow 0}\dfrac{P_j(t+\Delta t)-P_j (t)}{\Delta t}&=0\label{steady-condition}
  \end{align}
   We can reach a state of $j$ jobs at time $t+\Delta t$ from
