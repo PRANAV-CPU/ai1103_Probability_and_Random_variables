@@ -158,11 +158,11 @@ D           & $\dfrac{1}{4}<Y-X$ \\[1ex] \hline
 \label{tab:Events}
 \end{table}
 $\frac{1}{4}$ are given in the below table.\\
-Then the required event which solves the problem is $ABC$+$ABD$.\\
+Then the required event which solves the problem is $ABC$+$ABD$.
 \begin{align}
     \pr{ABC}&=\pr{\frac{1}{4}+Y<X,\frac{1}{4}<X,Y<\frac{3}{4}}\\
-    &=\sum_{y=\frac{1}{4}}^{\frac{3}{4}} P_{Y}(y)\pr{\frac{1}{4}+y<X,\frac{1}{4}<X<\frac{3}{4}}\\
-     &=\int_{y=\frac{1}{4}}^{\frac{3}{4}}dyf_Y(y)\pr{\frac{1}{4}+y<X<\frac{3}{4}}\label{step2}
+    &=\int_{\frac{1}{4}}^{\frac{3}{4}}dyf_Y(y) \pr{\frac{1}{4}+y<X,\frac{1}{4}<X<\frac{3}{4}}\\
+     &=\int_{\frac{1}{4}}^{\frac{3}{4}}dyf_Y(y)\pr{\frac{1}{4}+y<X<\frac{3}{4}}\label{step2}
      \end{align}
      As $X$ is distributed uniformly between 0 and 1.
      \begin{align}
@@ -173,7 +173,7 @@ Then the required event which solves the problem is $ABC$+$ABD$.\\
      \end{align}
      Using \eqref{step2help},\eqref{step2} can be written as
      \begin{align}
-    \pr{ABC}&=\int_{y=\frac{1}{4}}^{\frac{1}{2}}dyf_Y(y)\brak{\frac{1}{2}-y}
+    \pr{ABC}&=\int_{\frac{1}{4}}^{\frac{1}{2}}dyf_Y(y)\brak{\frac{1}{2}-y}
     \end{align}
     As y is distributed uniformly between 0 and 1.
     \begin{align}
