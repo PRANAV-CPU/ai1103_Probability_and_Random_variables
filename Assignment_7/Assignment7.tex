@@ -147,31 +147,44 @@ Conditions which should be satisfied to have three line segments with length gre
 \textbf{Event} & \textbf{Condition}                     \\\hline
 A              & $\dfrac{1}{4}<X<\dfrac{3}{4}$ \\[1ex] \hline
 B              & $\dfrac{1}{4}<Y<\dfrac{3}{4}$ \\[1ex] \hline
-C              & $\dfrac{1}{4}<|X-Y|$ \\[1ex] \hline
+C              & $\dfrac{1}{4}<X-Y$ \\[1ex] \hline
+D           & $\dfrac{1}{4}<Y-X$ \\[1ex] \hline
 \end{tabular}
 \egroup
 \caption{Events and their conditions}
 \label{tab:Events}
 \end{table}
 $\frac{1}{4}$ are given in the below table.\\
-Then the required event which solves the problem is $ABC$.\\
-As $A$ and $B$ are independent events.
+Then the required event which solves the problem is $ABC$+$ABD$.
 \begin{align}
-    \pr{ABC}&=\pr{A}\pr{B}\pr{C|AB}
+    \pr{ABC}&=\pr{\frac{1}{4}+Y<X,\frac{1}{4}<X,Y<\frac{3}{4}}\\
+    &=\int_{\frac{1}{4}}^{\frac{3}{4}}dyf_Y(y) \pr{\frac{1}{4}+y<X,\frac{1}{4}<X<\frac{3}{4}}\\
+     &=\int_{\frac{1}{4}}^{\frac{3}{4}}dyf_Y(y)\pr{\frac{1}{4}+y<X<\frac{3}{4}}\label{step2}
+     \end{align}
+     As $X$ is distributed uniformly between 0 and 1.
+     \begin{align}
+        \pr{\frac{1}{4}+y<X<\frac{3}{4}}=\begin{cases}
+        \dfrac{1}{2}-y&y\in \brak{0,\dfrac{1}{2}}\\
+        0&\text{otherwise}
+        \end{cases}\label{step2help}
+     \end{align}
+     Using \eqref{step2help},\eqref{step2} can be written as
+     \begin{align}
+    \pr{ABC}&=\int_{\frac{1}{4}}^{\frac{1}{2}}dyf_Y(y)\brak{\frac{1}{2}-y}
+    \end{align}
+    As y is distributed uniformly between 0 and 1.
+    \begin{align}
+   \pr{ABC} &=\int_{\frac{1}{4}}^{\frac{1}{2}}\frac{1}{2}-y~dy\\
+    &=\dfrac{1}{32}
 \end{align}
-As X and Y are uniformly distributed between 0 and 1.
+Similarly,we can find,
 \begin{align}
-    \pr{A}&=\pr{\dfrac{1}{4}<X<\dfrac{3}{4}}=\dfrac{1}{2}\\
-    \pr{B}&=\pr{\dfrac{1}{4}<Y<\dfrac{3}{4}}=\dfrac{1}{2}
+    \pr{ABD}&=\dfrac{1}{32}
 \end{align}
-When event AB is known to occur,X and Y are uniformly distributed between $\dfrac{1}{4}$ and $\dfrac{3}{4}$\\\\ 
-Conditional probability density functions of X and Y with condition AB are
+As $C$ and $D$ are mutually exclusive events.
 \begin{align}
-    f_{X|AB}(x) = 
-    \begin{cases}
-    2 & x\in \brak{\frac{1}{4},\frac{3}{4}}\\
-    0 & \text{otherwise}
-    \end{cases}
+    \pr{ABC+ABD}&=\pr{ABC}+\pr{ABD}\\
+    &=\dfrac{1}{16} 
 \end{align}
 \begin{align}
     f_{Y|AB}(y) = 
