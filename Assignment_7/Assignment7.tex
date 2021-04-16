@@ -139,7 +139,7 @@ https://github.com/pranav-159/ai1103_Probability_and_Random_variables/blob/main/
 \textbf{gov/stats/2015/statistics-I(1), Q.3(C)}\\
   Three points are chosen on the line of unit length.Find the probability that each the 3 line segments have length greater than $\dfrac{1}{4}$.
 \section{Solution}
- Let $X,Y \in \{0,1\}$ be the random variables which represent the position of two points on the line of unit length.\\
+Let $X,Y \in \{0,1\}$ be the random variables which represent the position of two points on the line of unit length.\\
 Conditions which should be satisfied to have three line segments with length greater than 
 \begin{table}[h]
 \centering
@@ -238,4 +238,58 @@ $~~z \in \sbrak{-\dfrac{1}{2},0}$          & $2+4z$ \\[1ex] \hline
     \pr{ABC}&=\dfrac{1}{16}
 \end{align}
 $\therefore$ probability that each of the three line segments have length greater than $\dfrac{1}{4}$ is $\dfrac{1}{16}$.
+\section{Alternate Method}
+ Let $X,Y \in \{0,1\}$ be the random variables which represent the position of two points on the line of unit length.\\
+Conditions which should be satisfied to have three line segments with length greater than 
+\begin{table}[h]
+\centering
+\bgroup
+\def\arraystretch{2}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Event} & \textbf{Condition}                     \\\hline
+A              & $\dfrac{1}{4}<X<\dfrac{3}{4}$ \\[1ex] \hline
+B              & $\dfrac{1}{4}<Y<\dfrac{3}{4}$ \\[1ex] \hline
+C              & $\dfrac{1}{4}<X-Y$ \\[1ex] \hline
+D           & $\dfrac{1}{4}<Y-X$ \\[1ex] \hline
+\end{tabular}
+\egroup
+\caption{Events and their conditions}
+\label{tab:Events}
+\end{table}
+$\frac{1}{4}$ are given in the below table.\\
+Then the required event which solves the problem is $ABC$+$ABD$.
+\begin{align}
+    \pr{ABC}&=\pr{\frac{1}{4}+Y<X,\frac{1}{4}<X,Y<\frac{3}{4}}\\
+    &=\sum~\pr{Y=y|\frac{1}{4}<X,Y<\frac{3}{4}}\times\nonumber\\
+    &~~~~~~~~~~\pr{\frac{1}{4}+y<X,\frac{1}{4}<X<\frac{3}{4}}\\
+    &=\int_{\frac{1}{4}}^{\frac{3}{4}}dyf_Y(y)\times\nonumber\\ &~~~~~~~\pr{\frac{1}{4}+y<X,\frac{1}{4}<X<\frac{3}{4}}\\
+     &=\int_{\frac{1}{4}}^{\frac{3}{4}}dyf_Y(y)\pr{\frac{1}{4}+y<X<\frac{3}{4}}\label{step2}
+     \end{align}
+     As $X$ is distributed uniformly between 0 and 1.
+     \begin{align}
+        \pr{\frac{1}{4}+y<X<\frac{3}{4}}=\begin{cases}
+        \dfrac{1}{2}-y&y\in \brak{0,\dfrac{1}{2}}\\
+        0&\text{otherwise}
+        \end{cases}\label{step2help}
+     \end{align}
+     Using \eqref{step2help},\eqref{step2} can be written as
+     \begin{align}
+    \pr{ABC}&=\int_{\frac{1}{4}}^{\frac{1}{2}}dyf_Y(y)\brak{\frac{1}{2}-y}
+    \end{align}
+    As y is distributed uniformly between 0 and 1.
+    \begin{align}
+   \pr{ABC} &=\int_{\frac{1}{4}}^{\frac{1}{2}}\frac{1}{2}-y~dy\\
+    &=\dfrac{1}{32}
+\end{align}
+Similarly,we can find,
+\begin{align}
+    \pr{ABD}&=\dfrac{1}{32}
+\end{align}
+As $C$ and $D$ are mutually exclusive events.
+\begin{align}
+    \pr{ABC+ABD}&=\pr{ABC}+\pr{ABD}\\
+    &=\dfrac{1}{16} 
+\end{align}
+$\therefore$ probability that each of the three line segments have length greater than $\dfrac{1}{4}$  is  $\dfrac{1}{16}$.
 \end{document}    
